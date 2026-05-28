@@ -1,0 +1,4 @@
+interface:
+  display_name: "原型 PRD 轻流程"
+  short_description: "轻量阶段流程，按需读取后台、原型、PRD和工程规范"
+  default_prompt: "使用 prototype-prd-workflow-lite，先按轻量流程判断阶段，再按需读取规范完成任务。"
