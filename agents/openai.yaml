@@ -1,0 +1,4 @@
+interface:
+  display_name: "原型 PRD 流程"
+  short_description: "规范产品探索、后台页面设计、快速原型、PRD文档和模板流程"
+  default_prompt: "使用 prototype-prd-workflow，按通用标准帮我完成页面框架、快速原型、PRD或导入模板任务。"
