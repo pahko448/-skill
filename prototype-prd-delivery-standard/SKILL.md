@@ -13,31 +13,35 @@ Use this skill to produce reusable, implementation-facing product deliverables. 
    - User-facing page, backend/admin page, AI-assisted page, mixed system, or import/export template.
    - Prototype only, PRD only, flowchart only, Modao/HTML import only, or full delivery.
 
-2. Classify page types before writing.
+2. Calibrate collaboration before high-impact or repeated work.
+   - Read `references/collaboration-checkpoints.md` when the task affects layout, flow, PRD rules, import structure, or when the same issue has failed more than once.
+   - Restate the goal, acceptance criteria, change scope, and validation method before editing.
+
+3. Classify page types before writing.
    - Read `references/page-types.md` when the page type is unclear or mixed.
 
-3. Extract elements using the shared taxonomy.
+4. Extract elements using the shared taxonomy.
    - Read `references/element-taxonomy.md`.
    - Every visible or interactive item must have element, source, and behavior.
 
-4. Select domain rules.
+5. Select domain rules.
    - User-facing flows: read `references/user-app-rules.md`.
    - Backend/admin systems: read `references/admin-system-rules.md`.
    - State, permissions, roles, and logs: read `references/state-and-permission-rules.md`.
 
-5. Write PRD in numbered format.
+6. Write PRD in numbered format.
    - Read `references/prd-format.md`.
    - Do not use tables unless the user explicitly requests them.
 
-6. Build or revise flowcharts.
+7. Build or revise flowcharts.
    - Read `references/flowchart-rules.md`.
    - Include main flow, branch flow, exception flow, return/exit flow, and completion flow.
 
-7. If generating HTML for Modao or another visual import target, apply import-safe rules.
+8. If generating HTML for Modao or another visual import target, apply import-safe rules.
    - Read `references/modao-html-import-rules.md`.
    - Local HTML correctness is not enough. Check actual visual readability after import when possible.
 
-8. Finish with acceptance validation.
+9. Finish with acceptance validation.
    - Read `references/validation-checklist.md`.
    - Report unresolved risks clearly.
 
@@ -49,6 +53,7 @@ Use this skill to produce reusable, implementation-facing product deliverables. 
 - Do not rely on tables for PRD body structure. Use consistent numbered sections.
 - Do not claim visual correctness from source code alone. Verify rendered/imported output when the target is visual.
 - Do not silently discard branch, failure, permission, or return/exit flows.
+- If the same issue fails twice, stop patching and recalibrate before making another change.
 
 ## Default PRD Line Format
 
