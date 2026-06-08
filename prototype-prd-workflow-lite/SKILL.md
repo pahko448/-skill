@@ -30,18 +30,23 @@ If the user asks to hear the plan first, output the stage, understanding, change
 
 ## Quick Decision Rules
 
+- Start with lightweight Intake Routing: classify task scale (`Lite`, `Standard`, `Full`), delivery route, and needed references.
 - For small direct edits: keep the checklist internal and change the smallest owner file.
 - For medium/high-risk edits: state what will change, what will not change, risk, and validation before editing.
+- For prototype/PRD/flowchart/style replication/C-end/backend/admin/Modao delivery tasks: route delivery priority, style source, scope, output type, and validation before creating artifacts.
 - For new medium/large pages: use Architecture -> Skeleton -> Prototype. Do not jump directly to a polished page.
 - For screenshot feedback: use Review Fix and edit only the marked issue.
 - For file splitting, context bloat, or maintainability work: use Refactor, preserve visible behavior.
 - For PRD: write only after page logic or structure is confirmed.
 - For import templates: first read or confirm backend fields, import logic, sample data, or database structure.
+- Stop and recalibrate if the same issue is pointed out twice, the user says the output is not what they meant, scope expands unexpectedly, or Modao/import output conflicts with browser preview.
 
 ## Reference Loading
 
 Load only the references needed for the current task:
 
+- Delivery routing or Modao import: use `prototype-delivery-router` first when available or explicitly named.
+- Screen-level PRD, element-source mapping, flowcharts, or import validation: use `prototype-prd-delivery-standard` after routing when available.
 - Backend/admin page UI or interaction: read `references/backend-page-standard.md`.
 - Medium/large prototype, file structure, refactor, context compression, ownership, data/UI separation: read `references/maintainable-prototype.md`.
 - PRD writing or implementation-facing requirements: read `references/prd-standard.md`.

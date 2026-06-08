@@ -1,0 +1,6 @@
+interface:
+  display_name: "Prototype Delivery Router"
+  short_description: "Choose prototype, PRD, and Modao delivery paths."
+  default_prompt: "Use $prototype-delivery-router to route this prototype or PRD task before creating pages."
+policy:
+  allow_implicit_invocation: true

@@ -2,6 +2,25 @@
 
 Use numbered sections. Do not use tables unless the user explicitly asks for tables.
 
+## Function-Level Format
+
+Use this for backend/admin functions, configuration modules, and implementation-facing PRDs:
+
+```text
+1、功能名称
+1-1：功能说明
+1-2：页面入口
+1-3：适用角色
+1-4：核心对象
+1-5：后台配置
+1-6：用户端表现
+1-7：状态规则
+1-8：异常与兜底
+1-9：恢复方式
+1-10：权限与日志
+1-11：验收标准
+```
+
 ## Module Format
 
 ```text

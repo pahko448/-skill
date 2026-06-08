@@ -11,10 +11,97 @@ Use this skill to keep product work staged, fast, verifiable, and reusable. The 
 
 Separate discovery, page architecture, prototype edits, review fixes, PRD writing, and template generation. Do not mix stages unless the user explicitly asks.
 
+## Intake Routing
+
+Before prototype, PRD, flowchart, style replication, C-end/user-app, backend/admin, Modao, or template work, run Intake Routing before creating artifacts.
+
+Intake Routing decides three things:
+
+1. Task scale: `Lite`, `Standard`, or `Full`.
+2. Delivery route: priority, style source, scope, output, and validation.
+3. Reference loading: which skill or reference is needed.
+
+### Task Scale Check
+
+Use the lightest safe mode:
+
+1. `Lite`
+   - Use for copy, one button/field/tag, screenshot review fixes, one confirmed field, or local style tweaks.
+   - Must not change business flow, backend-user linkage, external systems, imports, sync, links, QR codes, permissions, or state transitions.
+   - Keep the check internal unless the user asks for confirmation.
+2. `Standard`
+   - Use for one backend module, one page, one modal/drawer/flow, existing workflow adjustment, backend config affecting user display, states, permissions, exceptions, fallback, or imports without complex multi-system linkage.
+   - Briefly state goal, core object, source of truth, interaction model, scope, and validation when risk is meaningful.
+3. `Full`
+   - Use for long-running projects, multi-page flows, backend + user-side chains, external systems, live codes, links, QR codes, sync, import, permissions, state transitions, prototype + PRD + Modao handoff, or architecture-risky user proposals.
+   - Must perform solution architecture, challenge-risk check, ownership/source-of-truth check, failure-first design, interaction model selection, and PRD system mapping as needed.
+
+### Delivery Route
+
+Use this routing only as much as needed:
+
+1. Delivery priority:
+   - Visual fidelity first.
+   - Modao editability first.
+   - PRD review clarity first.
+   - Fast interaction validation first.
+2. Style source:
+   - Provided reference page/image.
+   - Existing style pack or current prototype.
+   - Historical project style.
+   - New style direction.
+3. Delivery scope:
+   - One-page sample first.
+   - One functional block first.
+   - One core flow first.
+   - Full batch after sample approval.
+4. Target output:
+   - HTML/local preview only.
+   - Images + PRD board.
+   - Modao import.
+   - Flowchart + PRD.
+   - Pure PRD.
+   - Import template.
+   - Maintainable prototype code.
+
+For low-risk local edits, keep routing internal and proceed. For Standard/Full, high-impact, visual, full-batch, or Modao tasks, state the selected route and wait for confirmation when the user asked to confirm first.
+
+Use this concise output when routing is needed:
+
+```md
+Intake Routing:
+1、Task Scale:
+1-1：...
+2、Delivery Route:
+2-1：...
+3、Reference Loading:
+3-1：...
+```
+
+Default delivery templates:
+
+- C-end AI inquiry flow: `user-questioning-flow`.
+- C-end page annotation PRD: `c-end-prd-annotation`.
+- Style replication: `style-token-extractor`.
+- Modao delivery: `modao-import-validator`.
+- Backend/admin systems: `admin-system-page`.
+- Flowchart: `interaction-flow-map`.
+
+Modao rule: browser preview is not Modao acceptance. Before full Modao import, import or validate one page first, then check image visibility, critical text, annotation numbers, layout alignment, and PRD readability.
+
+### Reference Loading
+
+- Delivery routing or Modao import: use `prototype-delivery-router` first when available or explicitly named.
+- Screen-level PRD, element-source mapping, flowcharts, state transitions, or import validation: use `prototype-prd-delivery-standard` after routing when available.
+- Backend config affecting user-side behavior: load PRD/system mapping and failure-first rules when available.
+- External systems, links, QR codes, live codes, sync, or third-party resources: load challenge, ownership/source-of-truth, and failure-first rules when available.
+- Import templates: load import-template rules only after fields and parsing behavior are confirmed.
+
 ## Stage Gate
 
 At the start of each non-trivial task, identify the active stage:
 
+- `Intake Routing`: choose task scale, delivery route, and reference loading before artifact creation when the task involves prototype/PRD/flowchart/style replication/C-end/backend/admin/Modao/template delivery.
 - `Exploration`: read existing pages, source maps, screenshots, backend pages, database schemas, logs, or sample data. Do not generate final deliverables yet.
 - `Design Frame`: define page type, role, core workflow, information architecture, reference priority, boundaries, and acceptance criteria. Do not edit files yet.
 - `Architecture`: define routes, page ownership, module ownership, component tree, data/config files, states, and implementation boundaries. Do not edit visual UI yet.
@@ -29,16 +116,18 @@ If the user asks "explain your thinking first" or "restate before executing", re
 
 Use this full staged flow for medium or large work:
 
-1. Explore: understand source material, existing files, backend/database/screenshots, and current constraints.
-2. Frame: define target product structure, user roles, page goals, and business boundaries.
-3. Architecture: define routes, modules, components, data/config files, states, and ownership.
-4. Skeleton: build or adjust the page skeleton with placeholders before visual polish.
-5. Prototype: implement the smallest useful interaction or page section.
-6. Verify: run syntax checks, browser checks, or visual checks when possible.
-7. Review Fix: fix only explicit review feedback or screenshot-marked issues.
-8. Refactor: improve maintainability without changing visible output.
-9. PRD: document confirmed product logic and implementation-facing requirements.
-10. Template: generate import/export templates only after fields are confirmed.
+1. Intake: choose task scale, delivery route, reference loading, and validation when needed.
+2. Explore: understand source material, existing files, backend/database/screenshots, and current constraints.
+3. Frame: define target product structure, user roles, page goals, and business boundaries.
+4. Architecture: define routes, modules, components, data/config files, states, and ownership.
+5. Skeleton: build or adjust the page skeleton with placeholders before visual polish.
+6. Prototype: implement the smallest useful interaction or page section.
+7. Verify: run syntax checks, browser checks, or visual checks when possible.
+8. Review Fix: fix only explicit review feedback or screenshot-marked issues.
+9. Refactor: improve maintainability without changing visible output.
+10. PRD: document confirmed product logic and implementation-facing requirements.
+11. Handoff: freeze scope before Modao or external design handoff.
+12. Template: generate import/export templates only after fields are confirmed.
 
 ## Universal Preflight
 
@@ -405,11 +494,16 @@ For every exception, define:
 6. Fallback or degradation rule.
 7. Logging, monitoring, or audit trail.
 
-Use this generic table in PRDs:
+Use numbered structure in PRDs:
 
 ```md
-| Exception Source | Impact Scope | Blocking Strategy | Backend Presentation | End-User Presentation | Fallback Rule | Logs/Alerts |
-| --- | --- | --- | --- | --- | --- | --- |
+1、Exception Source
+1-1：Impact scope.
+1-2：Blocking strategy.
+1-3：Backend/admin presentation.
+1-4：End-user presentation.
+1-5：Fallback or degradation rule.
+1-6：Logs, monitoring, or audit trail.
 ```
 
 ### Exception Sources
@@ -467,6 +561,10 @@ Use the least disruptive safe fallback:
 
 Use tools deliberately. State tool intent briefly when it affects workflow.
 
+- Use delivery routing before choosing tools when the task may produce prototype, PRD board, flowchart, C-end screens, backend/admin pages, style replication, or Modao output.
+- If `prototype-delivery-router` is available and explicitly named, use it first for routing, then continue with this workflow for detailed product architecture, prototype, PRD, or template execution.
+- If `prototype-prd-delivery-standard` is available and the task needs element-source mapping, screen-level PRD, state transitions, flowcharts, or Modao/import validation, use it after routing.
+- Delivery routing does not override product architecture. For backend/admin systems, source of truth, core object ownership, exceptions, and user-side fallback still come from this workflow.
 - Use `ui-ux-pro-max` when the task asks for UI/UX quality, page design, backend/admin interaction, visual polish, layout review, or component-level design judgment.
 - Use the Browser plugin/browser skill when opening, inspecting, clicking, screenshotting, or verifying a local app/prototype/in-app page.
 - Use Pencil MCP tools when the task involves `.pen` files or design canvas edits:
@@ -564,29 +662,35 @@ Validation:
 
 Use PRD mode only after the page flow, module structure, or backend fields are confirmed.
 
-Use this structure:
+Use this numbered structure:
 
 ```md
 ## Page Name
 
-### 1. Page Goal
-### 2. Entry And Permissions
-### 3. Page Structure
-### 4. Module Breakdown
-### 5. Fields And Controls
-### 6. Enums And States
-### 7. Interaction Rules
-### 8. Validation Rules
-### 9. Exceptions And Backend Handling
-### 10. End-User Fallback And Degradation
-### 11. Data Mapping
-### 12. Product-To-Tech Mapping
-### 13. Logs, Audit, And Monitoring
-### 14. Change Boundary And Non-Goals
+1、Page Goal
+1-1：...
+1-2：...
+
+2、Entry And Permissions
+2-1：...
+2-2：...
+
+3、Page Structure
+3-1：...
+3-2：...
+
+4、Module Breakdown
+4-1：...
+4-2：...
+
+Continue this numbered style for fields, states, interactions, validation, exceptions, fallback, data mapping, product-to-tech mapping, logs, and non-goals.
 ```
 
 PRD rules:
 
+- Prefer numbered paragraphs over tables. Use `1、`, `1-1：`, `1-2：` style for PRD bodies so items can be reviewed, referenced, and changed precisely.
+- Do not use tables as the default PRD structure. Use tables only when the user explicitly requests a table or when a compact comparison matrix is clearly better.
+- Write backend behavior and end-user behavior as linked numbered items under the same function/module, not as separate scattered tables.
 - Follow confirmed prototype and real backend fields.
 - Do not add modules not present in the confirmed scope unless clearly marked as proposed.
 - Record every visible field, button, state, empty state, and error state.
@@ -634,18 +738,59 @@ Expected import behavior:
 
 Use this rhythm for multi-step product work:
 
-1. Explore source/backend/database/screenshots.
-2. Frame target product structure, roles, goals, and boundaries.
-3. Define architecture: routes, modules, components, data/config files, states, and ownership.
-4. Build or adjust the skeleton with placeholders.
-5. Prototype the smallest useful interaction or page section.
-6. Verify with browser and syntax checks when relevant.
-7. Apply screenshot feedback narrowly.
-8. Refactor only when requested or clearly staged.
-9. Write PRD only after confirmation.
-10. Generate templates only from confirmed fields.
+1. Run Intake Routing for task scale, delivery route, reference loading, and validation when the work is medium/high-impact or delivery-oriented.
+2. Explore source/backend/database/screenshots.
+3. Frame target product structure, roles, goals, and boundaries.
+4. Define architecture: routes, modules, components, data/config files, states, and ownership.
+5. Build or adjust the skeleton with placeholders.
+6. Prototype the smallest useful interaction or page section.
+7. Verify with browser and syntax checks when relevant.
+8. Apply screenshot feedback narrowly.
+9. Refactor only when requested or clearly staged.
+10. Write PRD only after confirmation.
+11. Freeze scope before Modao or external design handoff.
+12. Generate templates only from confirmed fields.
 
 When the user changes direction mid-task, acknowledge the newer request and reset the active stage.
+
+## Modao Timing Rule
+
+Modao is a presentation and review artifact, not the default source of product truth.
+
+- Use one-page Modao pre-validation after prototype when the user only needs to test import behavior, editability, image visibility, text completeness, or annotation readability.
+- Use formal `Handoff Freeze` and `Modao Handoff` only after the prototype flow or PRD/core product logic is confirmed.
+- Browser preview success is not Modao acceptance.
+- Product logic changed in Modao must be back-ported to PRD or prototype notes.
+- If Modao conflicts with confirmed PRD, treat PRD as source of truth unless the user confirms the Modao change as a new requirement.
+
+## Stop Conditions
+
+Stop and recalibrate instead of continuing to patch when:
+
+1. The same issue is pointed out twice.
+2. The user says "not this", "not what I meant", or asks to confirm first after direct execution.
+3. Output style clearly drifts from the reference or confirmed style.
+4. Changes exceed the requested scope or affect unrelated modules.
+5. Review Fix turns into redesign or refactor.
+6. Refactor changes visible behavior.
+7. Modao/import output differs materially from browser preview.
+8. PRD, prototype, and Modao conflict on product logic.
+9. Context compression or uncertainty makes the current owner or source structure unclear.
+10. A confirmed "do not change" area was changed.
+
+When stopping, output:
+
+```md
+Need recalibration:
+1、Current deviation:
+1-1：...
+2、Original request:
+2-1：...
+3、Must preserve:
+3-1：...
+4、Smallest next scope:
+4-1：...
+```
 
 ## Failure Avoidance
 

@@ -2,59 +2,73 @@
 
 Use PRD mode only after page flow, module structure, or backend fields are confirmed.
 
-## Structure
+## Numbered Structure
 
 ```md
 ## Page Name
 
-### 1. Page Goal
-### 2. Entry And Permissions
-### 3. Page Structure
-### 4. Module Breakdown
-### 5. Fields And Controls
-### 6. Enums And States
-### 7. Interaction Rules
-### 8. Validation Rules
-### 9. Exceptions And Backend Handling
-### 10. End-User Fallback And Degradation
-### 11. Data Mapping
-### 12. Product-To-Tech Mapping
-### 13. Logs, Audit, And Monitoring
-### 14. Change Boundary And Non-Goals
+1、Page Goal
+1-1：...
+1-2：...
+
+2、Entry And Permissions
+2-1：...
+2-2：...
+
+3、Page Structure
+3-1：...
+3-2：...
+
+4、Module Breakdown
+4-1：...
+4-2：...
+
+Continue this numbered style for fields, states, interactions, validation, exceptions, fallback, data mapping, product-to-tech mapping, logs, and non-goals.
 ```
+
+## Numbered Writing Rules
+
+- Prefer numbered paragraphs over tables. Use `1、`, `1-1：`, `1-2：` style for PRD bodies so items can be reviewed, referenced, and changed precisely.
+- Do not use tables as the default PRD structure.
+- Use tables only when the user explicitly requests a table or when a compact comparison matrix is clearly better.
+- Write backend behavior and end-user behavior as linked numbered items under the same function/module, not as separate scattered tables.
 
 ## Product-To-Tech Mapping
 
-| Product Layer | Technical Mapping |
-| --- | --- |
-| Page | Route / Page file |
-| Module | Component |
-| Field | API field / mock data key |
-| Enum | Constant / backend enum |
-| State | UI state / business status |
-| Action | Event handler / API operation |
-| Config item | Admin config / mock config |
-| Exception | Error state / fallback rule |
-| Permission | Role guard / visibility rule |
-
 For implementation-oriented PRDs, include:
 
-- Route list.
-- Component tree.
-- Data model.
-- State list.
-- Config list.
-- API/mock boundary.
-- Files allowed to change.
-- Files not allowed to change.
+1、Route list
+1-1：Page route.
+1-2：Page owner.
 
-## Exception And Fallback Table
+2、Component tree
+2-1：Page component.
+2-2：Module component.
+2-3：Shared component if any.
+
+3、Data model
+3-1：API field or mock key.
+3-2：Enum or backend constant.
+3-3：State or status value.
+
+4、API/mock boundary
+4-1：Backend source.
+4-2：Mock/config source.
+4-3：Files allowed to change.
+4-4：Files not allowed to change.
+
+## Exception And Fallback
 
 All backend configuration PRDs must include backend and end-user handling:
 
 ```md
-| Exception Source | Impact Scope | Blocking Strategy | Backend Presentation | End-User Presentation | Fallback Rule | Logs/Alerts |
-| --- | --- | --- | --- | --- | --- | --- |
+1、Exception Source
+1-1：Impact scope.
+1-2：Blocking strategy.
+1-3：Backend presentation.
+1-4：End-user presentation.
+1-5：Fallback rule.
+1-6：Logs/alerts.
 ```
 
 Cover configuration disabled/expired, referenced object unavailable, enum removed, media unavailable, invalid link, rule no-match/conflict, required data missing, API error, import partial success, and permission mismatch when relevant.
